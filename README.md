@@ -1,4 +1,4 @@
-#University Admission Process Simulation
+# University Admission Process Simulation
 ## Introduction
 Around the world, many colleges and universities receive thousands of applications for freshman admission every
 year. The challenge of many universities is to select students who are most likely succeed in college and make a
@@ -95,7 +95,7 @@ To make the artificial dataset more close to the real situation, we have designe
 
 After the generation of all these 1000 applicants, the dataset is kept for all the time. Meanwhile, the figure illustrated the changing trend of score and inter-arrival time is shown below. 
 
-![np](https://github.com/Tsedao/University-Admission-Process-Simulation/raw/master/graphs_and_tables/n_score_time_hasrejection.jpg)
+![app_profile](https://github.com/Tsedao/University-Admission-Process-Simulation/raw/master/graphs_and_tables/profile_apps.jpg)
 
 ### Comprehensive performance analysis
 
