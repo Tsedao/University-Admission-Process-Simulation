@@ -86,6 +86,8 @@ To make the artificial dataset more close to the real situation, we have designe
 | Standard test scores   |Normal Distribution  |Mean: 70 + log(*i*), Var:100|
 | Level of recommendation letter   |Normal Distribution  |Mean: 70 + log(*i*), Var:100|
 | Level of personal statement   |Normal Distribution  |Mean: 70 + log(*i*), Var:100|
+| Service time of server 1  |Exponetial Distribution  |Mean: 1|
+| Service time of server 2   |Exponetial Distribution  |Mean: 1.5|
 | University’s minimum requirement for GPA | NONE   | 60  |
 | University’s minimum requirement for standardized test score   | NONE   | 60  |
 | The number of total applied students in this semester(N) | NONE   | 1000   |
@@ -104,3 +106,51 @@ Here we choose 5 groups of combinations of n-p, that is (n=205, p=45), (400,30),
 ![np](https://github.com/Tsedao/University-Admission-Process-Simulation/raw/master/graphs_and_tables/n_score_time_hasrejection.jpg)
 
 We see that both average score and average wait time will increase as n increases. However, the average score only raises less than 4 points from n=405 to n=1000 while the average waiting time has expanded nearly about 100%. 
+
+### Rolling performance analysis
+
+Here we choose (n=405, p=50) as a base case to analyse how to enhance the quality and admitted students. Consequently, we have considered whether changing the number of admitted applicants per rolling will affect the final performance or not. Moreover, we also check which rolling round in the busiest period so that we put more people there to reduce time. First, the origin information of the four rollings with constant p value is shown below:
+
+| |Start time (hours) |End time (hours) |Duration
+(hours) | Avg score (admitted)|
+|--------|--------:|--------:|--------:|--------:|
+|1st rolling|0|2530|2530|92.3|
+|2rd rolling|2527|3292|765|91.8|
+|3th rolling|	3286|	4033|	747|94.0|
+|4th rolling|4027|	4422|	395	|90.4|
+|Re rolling	|4422|	4422|	0	|90.4|
+
+Because in every rolling except the first one, there must be some applicants which are from the previous the round keep occupying the position, it's not fair to always give these applicants the same oppotunity as that of the new-arrived applicants later. Therefore, we decide to curtail the quota of admitted applicants per rolling. To choose these new p values in a wise way, we decide to make the value of p proportional to the number of new-arrived applicants for each rolling. That is:
+
+| |Number of new arrived applicants|p value|
+|--------|:--------:|:--------:|
+|1st rolling|400|80|
+|2rd rolling |225|45|
+|3th rolling|225|45|
+|4th rolling|150|30|
+
+After changing the p values per rolling, we can see from the below figure that, although in the first rolling, the quality seems to be not good as before, almost for all the rest of the rolling rounds, the admitted applicants is better than constant p.
+
+![dynamic_p](https://github.com/Tsedao/University-Admission-Process-Simulation/raw/master/graphs_and_tables/change_p_vs_not.jpg)
+
+#### Server1
+||Round 1 |Round 2|Round 3|Round 4|Average|
+|----|:----:|:----:|:----:|:----:|:----:|
+|Avg waiting time/h|	0.349|	0.673|	0.589|	0.936|	0.561|
+|Avg queueing length	|0.055|0.189|	0.178|	0.402|	0.127|
+|Busy rate|	0.152|	0.348|	0.306|	0.340|	0.227|
+
+![queue1](https://github.com/Tsedao/University-Admission-Process-Simulation/raw/master/graphs_and_tables/queue1.eps)
+
+![idle1](https://github.com/Tsedao/University-Admission-Process-Simulation/raw/master/graphs_and_tables/idle1.eps)
+
+#### Server2
+||Round 1 |Round 2|Round 3|Round 4|Average|
+|----|:----:|:----:|:----:|:----:|:----:|
+|Avg waiting time/h|	0.623|	1.741|	1.498|	1.228|	1.129|
+|Avg queueing length	|0.098|0.486|	0.451|	0.523|	0.256|
+|Busy rate|	0.221|	0.551|	0.491|	0.488|	0.345|
+
+![queue2](https://github.com/Tsedao/University-Admission-Process-Simulation/raw/master/graphs_and_tables/queue2.eps)
+
+![idle2](https://github.com/Tsedao/University-Admission-Process-Simulation/raw/master/graphs_and_tables/idle2.eps)
