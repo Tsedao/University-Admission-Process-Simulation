@@ -1,5 +1,5 @@
 # University Admission Process Simulation
-## Introduction
+## 1. Introduction
 Around the world, many colleges and universities receive thousands of applications for freshman admission every
 year. The challenge of many universities is to select students who are most likely succeed in college and make a
 significant contribution to their field of study accurately and quickly. Research in college enrollment has been
@@ -25,7 +25,7 @@ and efficiency of different universities’admission system from the universitie
 decision support model used computer simulation to provide pertinent information to colleges and help different
 types of universities select the most suitable and efficient admission process.
 
-## Literature Review
+## 2. Literature Review
 In Eugene’s paper, only admission of a pharmacy doctor was discussed and random forest machine learning
 technique was utilized to filter these candidates preliminary. Similarly, by the means of multivariate logistic
 regression, the GRADE (graduate admissions evaluator) introduced by Austin Waters and Risto Miikkulainen
@@ -37,9 +37,9 @@ have utilized basically is functioned as a preliminary filter and indeed, they s
 in some extend. However, Basing on large applicants’information, these mechanism utilized only served as a
 classifier and actually they does not touch the intrinsic property of a realistic university admission process.
 
-## Methodology and Procedure
+## 3. Methodology and Procedure
 
-## Notations
+## 4. Notations
 | Symbol        | Definition  |
 | --------   | ---------------------------------------:   |
 | N        | The number of total applied students in this semester     |
@@ -48,7 +48,7 @@ classifier and actually they does not touch the intrinsic property of a realisti
 | p       | The number of admitted students per rolling      |
 | \gamma       | The number of rolling rounds      |
 
-## Asumptions
+## 5. Asumptions
  1.	The admission process is only suit for graduate program.
  2.	Each applicant will be checked Transcripts (GPA), Standardized test scores (GRE/GMAT, language test scores - such as TOEFL or IELTS), Letters of recommendation
  and A statement of purpose (expresses student’s aims, ambitions and research interests, and descriptive answers to a few additional questions) in the simulation of admission process.
@@ -58,7 +58,7 @@ classifier and actually they does not touch the intrinsic property of a realisti
  6. Offers sent in the final roll all will not included scholarship
  7. In rolling admission, if the time is after the application deadline, then no matter whether the number of applicants in applicant pool has reach the expected number (n) or not, we will start the second round review, which is the ranking procedure.
 
-## Data-preprocessing 
+## 6. Data-preprocessing 
 From university’s perspective, normally the approximate applications in this year can be estimated based on empirical experience and the approximate admitted applicants in this year is manually controlled by the university. Therefore, in our university admission process, the number of total applied students in this year (N) and the number of total admitted applicants (M) can be known in advance. Consequently, what we need to set up for the admission process is the number of applied students per rolling (n) and the number of admitted applicants in each rolling (p). Since all the N applicants must be reviewed at the end of the lasting rolling and for the “maintain the whole waitlist” strategy, actually only p applicants have entered one rolling after the end of the first rolling. Therefore, we can build an equation related with n and p base on the number of rolling:
 
 ![equation1](https://github.com/Tsedao/University-Admission-Process-Simulation/raw/master/graphs_and_tables/equation1.png)
@@ -67,13 +67,13 @@ Considering the rest n-p applicants may be the worst n-p applicants among the wh
 
 ![equation2](https://github.com/Tsedao/University-Admission-Process-Simulation/raw/master/graphs_and_tables/equation2.png)
 
-## Simulation and Analysis 
+## 7. Simulation and Analysis 
 In this part, we only focus on one university and the related parameters have been set. Then base on the Equation updated above, we generate different combinations of n-p values. For different combinations of n-p values, we compare their performance through the admitted applicants’ comprehensive score and the average wait time of each applicants. Then we choose one base case of rolling admission to analyse:
  * The changing trend of duration from the first rolling to the end rolling.
  * The changing trend of admitted applicants’ comprehensive score from the first rolling to the end rolling.
  * The status of the two servers in the system.
 
-### Parameter settings
+### 7.1. Parameter settings
 
 To make the artificial dataset more close to the real situation, we have designed a dataset such that: in the early period of the admission process, applicants' quality is not very high and they are handing their application very slowly, however, when it closed to the end the admission process, applicants are urgent to apply for the university and also their profiles is very good. Therefore, here we assume the score of applicants will grow in a trend like logarithm and the inter-arrival time of each applicant will decrease in a negative exponential trend. More detials will be shown in the below table.
 
@@ -99,7 +99,7 @@ After the generation of all these 1000 applicants, the dataset is kept for all t
 
 ![app_profile](https://github.com/Tsedao/University-Admission-Process-Simulation/raw/master/graphs_and_tables/profile_apps.jpg)
 
-### Comprehensive performance analysis
+### 7.2. Comprehensive performance analysis
 
 Here we choose 5 groups of combinations of n-p, that is (n=205, p=45), (400,30), (635,45), (800,45) and (1000,80) to examine there performance by average score and average wait time of all the applicants.
 
@@ -107,7 +107,7 @@ Here we choose 5 groups of combinations of n-p, that is (n=205, p=45), (400,30),
 
 We see that both average score and average wait time will increase as n increases. However, the average score only raises less than 4 points from n=405 to n=1000 while the average waiting time has expanded nearly about 100%. 
 
-### Rolling performance analysis
+### 7.3. Rolling performance analysis
 
 Here we choose (n=405, p=50) as a base case to analyse how to enhance the quality and admitted students. Consequently, we have considered whether changing the number of admitted applicants per rolling will affect the final performance or not. Moreover, we also check which rolling round in the busiest period so that we put more people there to reduce time. First, the origin information of the four rollings with constant p value is shown below:
 
@@ -133,24 +133,24 @@ After changing the p values per rolling, we can see from the below figure that, 
 
 ![dynamic_p](https://github.com/Tsedao/University-Admission-Process-Simulation/raw/master/graphs_and_tables/change_p_vs_not.jpg)
 
-#### Server1
+#### 7.3.1. Server 1
 ||Round 1 |Round 2|Round 3|Round 4|Average|
 |----|:----:|:----:|:----:|:----:|:----:|
 |Avg waiting time/h|	0.349|	0.673|	0.589|	0.936|	0.561|
 |Avg queueing length	|0.055|0.189|	0.178|	0.402|	0.127|
 |Busy rate|	0.152|	0.348|	0.306|	0.340|	0.227|
 
-![queue1](https://github.com/Tsedao/University-Admission-Process-Simulation/raw/master/graphs_and_tables/queue1.eps)
+![queue1](https://github.com/Tsedao/University-Admission-Process-Simulation/raw/master/graphs_and_tables/queue1.png)
 
-![idle1](https://github.com/Tsedao/University-Admission-Process-Simulation/raw/master/graphs_and_tables/idle1.eps)
+![idle1](https://github.com/Tsedao/University-Admission-Process-Simulation/raw/master/graphs_and_tables/idle1.png)
 
-#### Server2
+#### 7.3.2. Server 2
 ||Round 1 |Round 2|Round 3|Round 4|Average|
 |----|:----:|:----:|:----:|:----:|:----:|
 |Avg waiting time/h|	0.623|	1.741|	1.498|	1.228|	1.129|
 |Avg queueing length	|0.098|0.486|	0.451|	0.523|	0.256|
 |Busy rate|	0.221|	0.551|	0.491|	0.488|	0.345|
 
-![queue2](https://github.com/Tsedao/University-Admission-Process-Simulation/raw/master/graphs_and_tables/queue2.eps)
+![queue2](https://github.com/Tsedao/University-Admission-Process-Simulation/raw/master/graphs_and_tables/queue2.png)
 
-![idle2](https://github.com/Tsedao/University-Admission-Process-Simulation/raw/master/graphs_and_tables/idle2.eps)
+![idle2](https://github.com/Tsedao/University-Admission-Process-Simulation/raw/master/graphs_and_tables/idle2.png)
