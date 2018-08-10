@@ -37,7 +37,9 @@ have utilized basically is functioned as a preliminary filter and indeed, they s
 in some extend. However, Basing on large applicants’information, these mechanism utilized only served as a
 classifier and actually they does not touch the intrinsic property of a realistic university admission process.
 
-## 3. Methodology and Procedure
+## 3. Procedure and Methodology
+Firstly, barinstorming and online search was both done to figure out what kinds of admission strategy are popularly utilized currently by nowdays university. Then, flowchart related to the most popular utilized university admission strategy was drawn. Then, based on the flowchart, relevant psuedo-code was also perpared. After scrutiny of the logic correctness of the psuedo-code, it is then implemented by JAVA. During the implementation, each experiment was repliced 500 times. Then, in order to optimize the quality and efficiency of the admission strategy, average score of admitted applicants and average waiting time of admitted applicants was output through the simulation. Meanwhile, the status of each server in the system is also recorded. Finally, basic sensitivity analysis for the parameter was done and some suggestion on the admission process was also given. 
+
 
 ## 4. Notations
 | Symbol        | Definition  |
@@ -154,3 +156,6 @@ After changing the p values per rolling, we can see from the below figure that, 
 ![queue2](https://github.com/Tsedao/University-Admission-Process-Simulation/raw/master/graphs_and_tables/queue2.png)
 
 ![idle2](https://github.com/Tsedao/University-Admission-Process-Simulation/raw/master/graphs_and_tables/idle2.png)
+
+## 8. Suggestion and conclusion 
+From the results shown above, it can be concluded that both rolling admission and normal admission has its advantage and disvantage. From university prospective, if raising the quality of the admitted students is their first priority, then, normal admission definitely is a good choice to them. However, for university that wants to respond to the applicants very soon, normal admission will be the last choice. Importantly, based on the total number of applied students from previous years, the university should not allow to much students in one rolling. Specifically, one of the choice is to let the maximum capacity for each rolling equal to 40% - 60% of the total number of applied students. Additionally, for the university that wants to try rolling admission strategy, adjusting the number of admitted students per rolling will be able to help university admit better applicants. Moreover, to raise the efficiency of the rolling admission, it is also suggested that the admission department should put more labor force in the middle round of the rolling process. Beacuse, during the middle peroid of the rolling process, it always turns out more busy than the other period. 
