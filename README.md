@@ -113,8 +113,7 @@ We see that both average score and average wait time will increase as n increase
 
 Here we choose (n=405, p=50) as a base case to analyse how to enhance the quality and admitted students. Consequently, we have considered whether changing the number of admitted applicants per rolling will affect the final performance or not. Moreover, we also check which rolling round in the busiest period so that we put more people there to reduce time. First, the origin information of the four rollings with constant p value is shown below:
 
-| |Start time (hours) |End time (hours) |Duration
-(hours) | Avg score (admitted)|
+| |Start time (hours) |End time (hours) |Duration (hours) | Avg score (admitted)|
 |--------|--------:|--------:|--------:|--------:|
 |1st rolling|0|2530|2530|92.3|
 |2rd rolling|2527|3292|765|91.8|
